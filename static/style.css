@@ -1,0 +1,133 @@
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url('bk.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.navbar{
+    width: 85%;
+    display: flex;
+    align-items: center;
+    padding: 35px 0;
+    margin: auto;
+    justify-content: space-between;
+}
+.logo{
+    color: White;
+    cursor: pointer;
+    font-size: 30px;
+
+}
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 25px;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase   ;
+    
+}
+.navbar ul li::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
+}
+.content{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    color: white;
+}
+.content h1{
+    font-size: 60px;
+}
+
+button{
+    width: 200px;
+    padding: 10px 15px;
+    border: 2px solid #009688;
+    border-radius: 30px;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+button span{
+    background: #009688;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.5s ease;
+    z-index: -1;
+}
+button:hover{
+    background-color: rgba(255,255,255,0.1);
+}
+button:hover span{
+    width: 100%;
+}
+.hamburger{
+    display: none;
+    cursor: pointer;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+@media(max-width:768px){
+    .hamburger{
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-menu{
+        position: fixed;
+        left: -120%;
+        top: 15%;
+        gap: 0;
+        flex-direction: column;
+        background: transparent;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+    
+    .nav-menu.active{
+        left: -10%;
+    }
+    #logoutButton{
+        width: 100px;
+    }
+}
