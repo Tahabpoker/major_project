@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Welcome</title>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <b>
+                <h1 class="logo" color="white">Pneumonia Detector System</h1>
+            </b>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <!-- <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Log in</a></li> -->
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <button id="logoutButton" class="nav-link"><span></span>LogOut</button>
+
+            </ul>
+            <div class="hamburger">
+                <label class="bar"></label>
+                <label class="bar"></label>
+                <label class="bar"></label>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Beware of Pneumonia</h1>
+            <p>This Web site is for only Education purpose not take it seriously</p><br>
+            <div>
+                <button type="button"><span></span>Detection</button>
+                <button type="button"><span></span>About Team</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"
+    import { getAuth, createUserWithEmailAndPassword, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"
+    import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyDA7INX-OKS5XvT5Zdm7rfNBBzR1yjKdCw",
+        authDomain: "authenticationtest-5ba1b.firebaseapp.com",
+        databaseURL: "https://authenticationtest-5ba1b-default-rtdb.firebaseio.com",
+        projectId: "authenticationtest-5ba1b",
+        storageBucket: "authenticationtest-5ba1b.appspot.com",
+        messagingSenderId: "869232976582",
+        appId: "1:869232976582:web:f28cea5921a4cdaeb1adc7",
+        measurementId: "G-L2FFYSKLEF"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app);
+
+    const auth = getAuth();
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', () => {
+        signOut(auth)
+            .then(() => {
+                // Sign out successful
+                window.location.href = "login"; // Redirect to login page
+            })
+            .catch((error) => {
+                // An error occurred during sign out
+                console.error(error);
+            });
+    });
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            // User is not logged in
+            window.location.href = "login"; // Redirect to login page
+        }
+    });
+
+    const hamburger = document.querySelector('.hamburger');
+    const nevMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle("active");
+        nevMenu.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }));
+</script>
+
+</html>
