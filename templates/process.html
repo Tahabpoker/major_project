@@ -16,10 +16,10 @@
                 <h1 class="logo" color="white">Pneumonia Detector System</h1>
             </b>
             <ul class="nav-menu">
-                <li><a href="home.html" class="nav-link">Home</a></li>
-                <!-- <li><a href="home" class="nav-link">Home</a></li> -->
-                <li><a href="about.html" class="nav-link">About Us</a></li>
-                <!-- <li><a href="about" class="nav-link">About Us</a></li> -->
+                <!-- <li><a href="home.html" class="nav-link">Home</a></li> -->
+                <li><a href="home" class="nav-link">Home</a></li>
+                <!-- <li><a href="about.html" class="nav-link">About Us</a></li> -->
+                <li><a href="about" class="nav-link">About Us</a></li>
                 <button id="logoutButton" class="nav-link"><span></span>LogOut</button>
             </ul>
             <div class="hamburger">
@@ -81,8 +81,8 @@
         signOut(auth)
             .then(() => {
                 // Sign out successful
-                window.location.href = "login.html"; // Redirect to login page
-                // window.location.href = "login"; // Redirect to login page
+                // window.location.href = "login.html"; // Redirect to login page
+                window.location.href = "login"; // Redirect to login page
             })
             .catch((error) => {
                 // An error occurred during sign out
@@ -92,8 +92,8 @@
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             // User is not logged in
-            window.location.href = "login.html"; // Redirect to login page
-            // window.location.href = "login"; // Redirect to login page
+            // window.location.href = "login.html"; // Redirect to login page
+            window.location.href = "login"; // Redirect to login page
         }
     });
 

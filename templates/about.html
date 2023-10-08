@@ -17,10 +17,10 @@
                 <h1 class="logo" color="white">Pneumonia Detector System</h1>
             </b>
             <ul class="nav-menu">
-                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="home" class="nav-link">Home</a></li>
                 <!-- <li><a href="register.html">Register</a></li>
                      <li><a href="login.html">Log in</a></li> -->
-                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="about" class="nav-link">About Us</a></li>
                 <button id="logoutButton" class="nav-link"><span></span>LogOut</button>
 
             </ul>
@@ -33,7 +33,7 @@
 
         <div class="header">
             <h1 class="head-heading">About Us</h1>
-            <h2 class="path"><a href="home.html" class="home-link">Home</a><label class="black-design"><i
+            <h2 class="path"><a href="home" class="home-link">Home</a><label class="black-design"><i
                         class='bx bx-chevron-right'></i></label>About Us</h2>
             <img src="/static/About-us-head Compressed.jpg" alt="" class="head-img">
         </div>
@@ -125,8 +125,8 @@
         signOut(auth)
             .then(() => {
                 // Sign out successful
-                window.location.href = "login.html"; // Redirect to login page
-                // window.location.href = "login"; // Redirect to login page
+                // window.location.href = "login.html"; // Redirect to login page
+                window.location.href = "login"; // Redirect to login page
             })
             .catch((error) => {
                 // An error occurred during sign out
@@ -136,8 +136,8 @@
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             // User is not logged in
-            window.location.href = "login.html"; // Redirect to login page
-            // window.location.href = "login"; // Redirect to login page
+            // window.location.href = "login.html"; // Redirect to login page
+            window.location.href = "login"; // Redirect to login page
         }
     });
 
@@ -155,8 +155,8 @@
     }));
     const detect = document.getElementById('detect');
     detect.addEventListener('click', () => {
-        window.location.href = "process.html";
-        // window.location.href = "process";
+        // window.location.href = "process.html";
+        window.location.href = "process";
     });
 
 </script>

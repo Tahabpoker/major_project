@@ -59,7 +59,7 @@
                         </div>
                         <br>
                         <div>
-                            <a href="sign-up.html"><span>Create Account</span></a>
+                            <a href="register"><span>Create Account</span></a>
                         </div>
                         <br>
                         <div class="input-field button" id="button"><span></span>
@@ -114,7 +114,7 @@
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
-                window.location.href = "home.html";
+                window.location.href = "home";
                 // window.location.href = "home";
             }).catch((error) => {
                 // Handle Errors here.
@@ -131,8 +131,8 @@
     onAuthStateChanged(auth, (user) => {
         if (user) {
             // User is already logged in
-            // window.location.href = "home"; // Redirect to home page
-            window.location.href = "home.html"; // Redirect to home page
+            window.location.href = "home"; //  Redirect to home page
+            // window.location.href = "home.html"; // Redirect to home page
         }
     });
     const Login = document.getElementById('Login');
@@ -144,8 +144,8 @@
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                window.location.href = "home.html";
-                // window.location.href ="home";
+                // window.location.href = "home.html";
+                window.location.href ="home";
                 alert('Login Successfully');
                 // ...
             })
