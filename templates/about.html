@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/about-us-page-style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>About us - Diseases Detection</title>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <b>
+                <h1 class="logo" color="white">Pneumonia Detector System</h1>
+            </b>
+            <ul class="nav-menu">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <!-- <li><a href="register.html">Register</a></li>
+                     <li><a href="login.html">Log in</a></li> -->
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <button id="logoutButton" class="nav-link"><span></span>LogOut</button>
+
+            </ul>
+            <div class="hamburger">
+                <label class="bar"></label>
+                <label class="bar"></label>
+                <label class="bar"></label>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1 class="head-heading">About Us</h1>
+            <h2 class="path"><a href="home.html" class="home-link">Home</a><label class="black-design"><i
+                        class='bx bx-chevron-right'></i></label>About Us</h2>
+            <img src="/static/About-us-head Compressed.jpg" alt="" class="head-img">
+        </div>
+        <div class="intro-content">
+            <div class="left-content">
+                <h1 class="head-intro">We are Provide a service for Pneumonia Detection</h1>
+                <p class="content-intro">
+                    Welcome to our website dedicated to advancing the field of pneumonia detection through cutting-edge
+                    technology. At [Your Organization Name], our vision is to improve early diagnosis rates and mitigate
+                    the
+                    impact of pneumonia on individuals and communities worldwide. With a team of experts in medical
+                    imaging,
+                    artificial intelligence, machine learning, and healthcare, we bring a wealth of knowledge and
+                    experience
+                    to the forefront of pneumonia detection.
+                </p>
+            </div>
+            <div class="right-content">
+                <img src="/static/About-intro-image (1).jpg" class="intro-img">
+            </div>
+        </div>
+        <br><br>
+        <section class="vision">
+            <h2>Our Vision</h2>
+
+            <div class="vision-container">
+                <div class="vision-box">
+                    <i class='bx bx-code'></i>
+                    <h3>Target</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, adipisci. Odit, atque quis ab
+                        error est, omnis minus maxime consequatur nam voluptatibus voluptatum reiciendis quidem!</p>
+                </div>
+
+                <div class="vision-box">
+                    <i class='bx bx-target-lock'></i>
+                    <h3>Target</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, adipisci. Odit, atque quis ab
+                        error est, omnis minus maxime consequatur nam voluptatibus voluptatum reiciendis quidem!</p>
+                </div>
+
+                <div class="vision-box">
+                    <i class='bx bx-code-curly'></i>
+                    <h3>Target</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, adipisci. Odit, atque quis ab
+                        error est, omnis minus maxime consequatur nam voluptatibus voluptatum reiciendis quidem!</p>
+                </div>
+            </div>
+
+
+        </section>
+        <br><br>
+        <footer class="footer">
+            CopyRight &copy; All Right are Reserved 
+        </footer>
+        <!-- <script src="Js/about-script.js"></script> -->
+</body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"
+    import { getAuth, createUserWithEmailAndPassword, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"
+    import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyDA7INX-OKS5XvT5Zdm7rfNBBzR1yjKdCw",
+        authDomain: "authenticationtest-5ba1b.firebaseapp.com",
+        databaseURL: "https://authenticationtest-5ba1b-default-rtdb.firebaseio.com",
+        projectId: "authenticationtest-5ba1b",
+        storageBucket: "authenticationtest-5ba1b.appspot.com",
+        messagingSenderId: "869232976582",
+        appId: "1:869232976582:web:f28cea5921a4cdaeb1adc7",
+        measurementId: "G-L2FFYSKLEF"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app);
+
+    const auth = getAuth();
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', () => {
+        alert("Logout button is Clicked");
+        signOut(auth)
+            .then(() => {
+                // Sign out successful
+                window.location.href = "login.html"; // Redirect to login page
+                // window.location.href = "login"; // Redirect to login page
+            })
+            .catch((error) => {
+                // An error occurred during sign out
+                console.error(error);
+            });
+    });
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            // User is not logged in
+            window.location.href = "login.html"; // Redirect to login page
+            // window.location.href = "login"; // Redirect to login page
+        }
+    });
+
+    const hamburger = document.querySelector('.hamburger');
+    const nevMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle("active");
+        nevMenu.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }));
+    const detect = document.getElementById('detect');
+    detect.addEventListener('click', () => {
+        window.location.href = "process.html";
+        // window.location.href = "process";
+    });
+
+</script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+    
+    ScrollReveal({
+        reset: true,
+        distance: '80px',
+        duration: 1500,
+        delay: 100
+    });
+    ScrollReveal().reveal('.intro-content .left-content .head-intro', { origin: 'top' });
+    ScrollReveal().reveal('.intro-content .left-content .content-intro', { origin: 'left' });
+    ScrollReveal().reveal('.intro-content .right-content .intro-img', { origin: 'bottom' });
+
+    ScrollReveal().reveal('.vision h2', { origin: 'top' });
+    ScrollReveal().reveal('.vision .vision-container', { origin: 'bottom' }); 
+</script>
+
+</html>

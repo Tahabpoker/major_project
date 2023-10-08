@@ -5,52 +5,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style-login.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/static/login-style.css">
+    <title>Login - Diseases Detection</title>
 </head>
 
 <body>
-    <div class="banner">
-        <div class="navbar">
-            <b>
-                <h1 class="logo" color="white">Pneumonia Detector System</h1>
-            </b>
-            <!-- <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="login.html">Log in</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul> -->
-        </div>
-        <!-- <form action="" name=""></form> -->
-        <div class="box">
-            <div class="container">
-                <div class="top-header">
-                    <span>Have An Account?</span>
-                    <header>Login</header>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="context">
+        <div class="banner">
+            <div class="navbar">
+                <b>
+                    <h1 class="logo" color="white">Pneumonia Detector System</h1>
+                </b>
+                <!-- <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login.html">Log in</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul> -->
+            </div>
+            <!-- <form action="" name=""></form> -->
+            <div class="box">
+                <div class="container">
+                    <div class="top-header">
+                        <span>Have An Account?</span>
+                        <header>Login</header>
+                    </div>
+                    <br><br>
+                    <div class="input-box">
+                        <div class="input-field">
+                            <input type="text" id="email" class="input" placeholder="Username" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <br>
+                        <div class="input-field">
+                            <input type="password" id="password" class="input" placeholder="Password" required>
+                            <!-- <i class="bx bx-lock"></i> -->
+                            <i><iconify-icon icon="bx:lock"></iconify-icon></i>
+                        </div>
+                        <br>
+                        <div>
+                            <a href="sign-up.html"><span>Create Account</span></a>
+                        </div>
+                        <br>
+                        <div class="input-field button" id="button"><span></span>
+                            <button class="submit" id="Login">Login</button>
+                        </div>
+
+                        <h2 class="option">OR</h2>
+                        <button class="google-signup-button" id="Google"><img src="/static/google-icon.png" alt="Google icon">Sign up with Google</button>
+                    </div>
                 </div>
-                <br><br>
-                <div class="input-field">
-                    <input type="text" id="email" class="input" placeholder="Username" required>
-                    <i class="bx bx-user"></i>
-                </div>
-                <br>
-                <div class="input-field">
-                    <input type="password" id="password" class="input" placeholder="Password" required>
-                    <!-- <i class="bx bx-lock"></i> -->
-                    <i><iconify-icon icon="bx:lock"></iconify-icon></i>
-                </div>
-                <br>
-                <div>
-                    <a href="register"><span>Create Account</span></a>
-                </div>
-                <br>
-                <div class="input-field button" id="button"><span></span>
-                    <button class="submit" id="Login">Login</button>
-                </div>
-                
-                <h2 class="option">OR</h2>
-                <button class="google-signup-button" id="Google"><img src="static/google-icon.png" alt="Google icon"> Sign up with Google</button>
             </div>
         </div>
 </body>
@@ -95,7 +114,8 @@
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
-                window.location.href = "index";
+                window.location.href = "home.html";
+                // window.location.href = "home";
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
@@ -111,7 +131,8 @@
     onAuthStateChanged(auth, (user) => {
         if (user) {
             // User is already logged in
-            window.location.href = "index"; // Redirect to index page
+            // window.location.href = "home"; // Redirect to home page
+            window.location.href = "home.html"; // Redirect to home page
         }
     });
     const Login = document.getElementById('Login');
@@ -123,7 +144,8 @@
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                window.location.href ="index";
+                window.location.href = "home.html";
+                // window.location.href ="home";
                 alert('Login Successfully');
                 // ...
             })
@@ -133,6 +155,18 @@
                 alert(errorMessage);
             });
     });
+
+
+    ScrollReveal({
+        reset: true,
+        distance: '80px',
+        duration: 1500,
+        delay: 100
+    });
+
+    ScrollReveal().reveal('.top-header span', { origin: 'top' })
+    ScrollReveal().reveal('.top-header header', { origin: 'left' })
 </script>
+<script src="https://unpkg.com/scrollreveal"></script>
 
 </html>
