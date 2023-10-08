@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Exo', sans-serif;
+}
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('process-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.navbar{
+    width: 85%;
+    display: flex;
+    align-items: center;
+    padding: 35px 0;
+    margin: auto;
+    justify-content: space-between;
+}
+.logo{
+    color: White;
+    cursor: pointer;
+    font-size: 30px;
+}
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 25px;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase   ;
+    
+}
+.navbar ul li::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: rgb(0,184,231);
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
+}
+.hamburger{
+    display: none;
+    cursor: pointer;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+#logoutButton{
+    width: 200px;
+    padding: 10px 15px;
+    border: 2px solid  rgb(0,184,231);
+    border-radius: 30px;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.box{
+    display: flex;
+    justify-content: right;
+    text-align: center;
+    color: white;
+    margin-top: 25px;
+    /* min-height: 70vh; */
+}
+.container{
+    /* background: transparent;
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0px 0px 10px rgba(0,0, 0, 0.2); */
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    padding: 0 15px 0 15px;
+}
+.container h1{
+    font-size: 40px;
+}
+.file-input{
+    position: relative;
+    border: 5px solid rgba(0, 184, 231, 0.2);
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 18px;
+    width: 300px;
+    margin-left: -75px;
+    justify-content: center;
+    left: 30%;
+}
+.file-input::-webkit-file-upload-button{
+    background: transparent;
+    width: 150px;
+    padding: 10px;
+    color: white;
+    border: 2px solid rgb(0,184,231);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.file-input:hover::-webkit-file-upload-button{
+    background: rgb(0,184,231);;
+    color: black;
+    border: 2px solid rgb(0,184,231);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.predict{   
+    width: 200px;
+    padding: 10px 15px;
+    border: 2px solid  rgb(0,184,231);
+    border-radius: 30px;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    left: 30%;
+    transition: 0.5s ;
+    margin: -10px 0 0 -10px;
+}
+.predict:hover{
+    background-color: rgb(0,184,231);
+}
+
+button span{
+    background:  rgb(0,184,231);
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.5s ease;
+    z-index: -1;
+}
+button:hover span{
+    width: 100%;
+}
+.input_img{
+    display: none;
+    width: 75px;
+    height: 50px;
+}
+.delete-btn{
+    position: relative;
+    display: none;
+    font-size: 25px;
+    border-color: rgb(0,184,231);
+    color: white;
+    background: transparent;
+    left: 165px;
+    width: 60px;
+    border-radius: 500px;
+    transition: 0.5s;
+}
+.delete-btn:hover{
+    background-color: rgb(0,184,231);
+    color: black;
+}
+.img_input_block{
+    display: flex;
+}
+.result{
+    position: relative;
+}
+@media(max-width:768px){
+    .hamburger{
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-menu{
+        position: fixed;
+        left: -120%;
+        top: 15%;
+        gap: 0;
+        flex-direction: column;
+        background: transparent;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+    
+    .nav-menu.active{
+        left: -10%;
+    }
+    #logoutButton{
+        width: 100px;
+    }
+}
