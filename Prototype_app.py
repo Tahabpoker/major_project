@@ -4,6 +4,7 @@ from flask import Flask
 from PIL import Image
 import tensorflow as tf 
 from flask import render_template, request
+import cv2
 
 app = Flask(__name__)
 
@@ -38,6 +39,33 @@ def processing_page_start():
 
 @app.route("/process", methods=['POST'])
 def processing_page_end():
+   
+
+    # Load your PNG image
+    image_path = '00009234_001.png'  # Replace with the path to your PNG image
+    image = cv2.imread(image_path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Ensure the image is in RGB format
+
+    # Resize the image to 224x224 to match the model's input shape
+    image = cv2.resize(image, (224, 224))
+
+    image = image / 255.0  # Normalize pixel values to [0, 1]
+
+    # Make a prediction using your model
+    prediction = model.predict(np.expand_dims(image, axis=0))  # Add an extra dimension for batch size
+
+    # Get the predicted class label and associated probability/confidence
+    predicted_label = np.argmax(prediction)
+    confidence = prediction[0][predicted_label]  # Probability of the predicted class
+
+    # If you want to map the class index to a class name
+    class_names = ["Atelectasis","Cardiomegaly","Consolidation","Edema","Effusion","Emphysema","Fibrosis","Hernia","Infiltration","Mass","Nodule","Pleural_Thickening","Pneumonia","Pneumothorax"]
+    predicted_class_name = class_names[predicted_label]
+
+    # Now 'predicted_class_name' contains the predicted class name for the single image,
+    # and 'confidence' contains the associated confidence.
+    print(f'Predicted Class: {predicted_class_name}')
+    print(f'Confidence: {confidence * 100:.2f}%')
 
     # imageFile = request.files.get('img',None)
     # image_path = "./testimages/" + imageFile.filename
