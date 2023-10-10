@@ -42,7 +42,10 @@ def processing_page_end():
    
 
     # Load your PNG image
-    image_path = '00009234_001.png'  # Replace with the path to your PNG image
+    imageFile = request.files.get('img',None)
+    image_path = "./testimages/" + imageFile.filename
+    imageFile.save(image_path)
+      # Replace with the path to your PNG image
     image = cv2.imread(image_path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Ensure the image is in RGB format
 
@@ -64,12 +67,11 @@ def processing_page_end():
 
     # Now 'predicted_class_name' contains the predicted class name for the single image,
     # and 'confidence' contains the associated confidence.
-    print(f'Predicted Class: {predicted_class_name}')
-    print(f'Confidence: {confidence * 100:.2f}%')
+    pred = predicted_class_name
+    # print(f'Predicted Class: {predicted_class_name}')
+    # print(f'Confidence: {confidence * 100:.2f}%')
 
-    # imageFile = request.files.get('img',None)
-    # image_path = "./testimages/" + imageFile.filename
-    # imageFile.save(image_path)
+   
 
     # img = tf.io.read_file(image_path)
     # img = tf.image.decode_image(img, channels=3)  # Make sure the number of channels is specified (usually 3 for RGB images)
