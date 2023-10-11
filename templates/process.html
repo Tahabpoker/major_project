@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Detection - Diseases Detection</title>
 </head>
+
 <body>
     <div class="banner">
         <div class="navbar">
@@ -18,7 +20,7 @@
             <ul class="nav-menu">
                 <!-- <li><a href="home.html" class="nav-link">Home</a></li> -->
                 <li><a href="home" class="nav-link">Home</a></li>
-                <!-- <li><a href="about.html" class="nav-link">About Us</a></li> -->
+                <!-- <li><a href="about" class="nav-link">About Us</a></li> -->
                 <li><a href="about" class="nav-link">About Us</a></li>
                 <button id="logoutButton" class="nav-link"><span></span>LogOut</button>
             </ul>
@@ -29,21 +31,33 @@
             </div>
         </div>
         <div class="box">
-            <div class="container">
-                <h1>Pneumonia Detection</h1>
-                <h4>This Website is Only for Education purpose not take it seriously!!</h4>
-                <br>
-                <br>
-                <div class="img_input_block">
-                    <img src="" class="input_img" id="displayImage">
-                    <input type="file" class="file-input" accept="image" id="InputDisplay">
-                    <button class="delete-btn" id="delt-btn"><i class='bx bxs-trash-alt'></i></button>
+            <form class="p-3 text-center" id="predictForm" action="#">
+            <!-- <form class="p-3 text-center" id="predictForm" action="/process" method="post" enctype="multipart/form-data" > -->
+                <div class="container">
+                    <h1>Pneumonia Detection</h1>
+                    <h4>This Website is Only for Education purpose not take it seriously!!</h4>
+                    <br>
+                    <br>
+                    <div class="img_input_block">
+                        <img src="" class="input_img" id="displayImage">
+                        <input type="file" class="file-input" accept="image" id="InputDisplay">
+                        <button class="delete-btn" id="delt-btn"><i class='bx bxs-trash-alt'></i></button>
+                    </div>
+                    <br><br>
+                    <!-- <button class="predict"><span></span>Predict</button> -->
+                    <input type="submit" class="predict" value="Predict" id="openModal" />
                 </div>
-                <br><br>
-                <!-- <button class="predict"><span></span>Predict</button> -->
-                <input type="submit" class="predict" value="Predict" />
+            </form>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-container">
+                <div class="modal-content">
+                    <span class="close-btn" id="closeModal"><i class='bx bx-x'></i></span>
+                    <h2>Report</h2>
+                    <img src="" id="reportImage" alt="X-ray Image" class="reportImage">
+                    <p>This is basic modal dialog</p>
+                </div>
             </div>
-            
         </div>
     </div>
 </body>
@@ -81,7 +95,7 @@
         signOut(auth)
             .then(() => {
                 // Sign out successful
-                // window.location.href = "login.html"; // Redirect to login page
+                // window.location.href = "login"; // Redirect to login page
                 window.location.href = "login"; // Redirect to login page
             })
             .catch((error) => {
@@ -92,7 +106,7 @@
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             // User is not logged in
-            // window.location.href = "login.html"; // Redirect to login page
+            // window.location.href = "login"; // Redirect to login page
             window.location.href = "login"; // Redirect to login page
         }
     });
@@ -115,6 +129,7 @@
     const displayImage = document.getElementById('displayImage');
     const InputDisplay = document.getElementById('InputDisplay');
     const deltbtn = document.getElementById('delt-btn');
+    const reportImage = document.getElementById("reportImage");
 
     InputDisplay.addEventListener('change', function () {
         const file = InputDisplay.files[0];
@@ -126,6 +141,7 @@
                 InputDisplay.style.left = '20%';
                 deltbtn.style.display = 'block';
                 deltbtn.style.left = '120px';
+                reportImage.src = e.target.result;
             }
             reader.readAsDataURL(file);
         }
@@ -143,10 +159,50 @@
         InputDisplay.style.left = '30%';
         deltbtn.style.display = 'none';
     });
+
+    const openModal = document.getElementById("openModal");
+    const closeModal = document.getElementById("closeModal");
+    const Modal = document.getElementById("myModal");
+    const predictForm = document.getElementById("predictForm");
+
+    const file = InputDisplay.files[0];
+
+    openModal.addEventListener("click", () => {
+
+        const file = InputDisplay.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                Modal.style.display = "block";
+                Modal.style.display = "flex";
+            }
+            reader.readAsDataURL(file);
+        }
+        else {
+            
+        }
+    })
+    predictForm.addEventListener("submit", function (event) {
+        if (!InputDisplay.files[0]) {
+            alert("Insert Image First");
+            event.preventDefault();
+
+        }
+    })
+
+    closeModal.addEventListener("click", () => {
+        Modal.style.display = "none";
+    })
+
+    window.addEventListener("click", (event) => {
+        if (event.target == Modal) {
+            Modal.style.display = "none";
+        }
+    })
 </script>
 <script src="https://unpkg.com/scrollreveal"></script>
 <script>
- ScrollReveal({
+    ScrollReveal({
         reset: true,
         distance: '30px',
         duration: 1500,
@@ -158,4 +214,5 @@
     ScrollReveal().reveal('.predict', { origin: 'bottom' });
 
 </script>
+
 </html>

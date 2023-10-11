@@ -32,8 +32,8 @@
                     <h1 class="logo" color="white">Pneumonia Detector System</h1>
                 </b>
                 <!-- <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="home">Home</a></li>
+                    <li><a href="register">Register</a></li>
                     <li><a href="login.html">Log in</a></li>
                     <li><a href="about.html">About Us</a></li>
                 </ul> -->
@@ -132,7 +132,7 @@
         if (user) {
             // User is already logged in
             window.location.href = "home"; //  Redirect to home page
-            // window.location.href = "home.html"; // Redirect to home page
+            // window.location.href = "home"; // Redirect to home page
         }
     });
     const Login = document.getElementById('Login');
@@ -144,9 +144,9 @@
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                // window.location.href = "home.html";
-                window.location.href ="home";
-                alert('Login Successfully');
+                window.location.href = "home";
+                // window.location.href ="home";
+                // alert('Login Successfully');
                 // ...
             })
             .catch((error) => {

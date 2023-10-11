@@ -306,4 +306,7 @@ i{
         background-attachment: fixed;
         background-position: center;
     }
+    .input-field{
+        width: 300px;
+    }
 }
