@@ -74,7 +74,7 @@
         signOut(auth)
             .then(() => {
                 // Sign out successful
-                // window.location.href = "login.html"; // Redirect to login page
+                // window.location.href = "login"; // Redirect to login page
                 window.location.href = "login"; // Redirect to login page
             })
             .catch((error) => {
@@ -85,7 +85,7 @@
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             // User is not logged in
-            // window.location.href = "login.html"; // Redirect to login page
+            // window.location.href = "login"; // Redirect to login page
             window.location.href = "login"; // Redirect to login page
         }
     });
@@ -104,15 +104,16 @@
     }));
     const detect = document.getElementById('detect');
     detect.addEventListener('click',()=>{
-        // window.location.href = "process.html";
+        // window.location.href = "process";
         window.location.href = "process";
     });
     const about_team = document.getElementById('about_team');
     about_team.addEventListener('click',()=>{
-        // window.location.href = "about.html";
-        window.location.href = "about";
+        // window.location.href = "about";
+        window.location.href = "about#OurTeam";
     });
 
+    
 
     ScrollReveal({
         reset: true,

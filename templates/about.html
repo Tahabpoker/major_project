@@ -19,7 +19,7 @@
             <ul class="nav-menu">
                 <li><a href="home" class="nav-link">Home</a></li>
                 <!-- <li><a href="register.html">Register</a></li>
-                     <li><a href="login.html">Log in</a></li> -->
+                     <li><a href="login">Log in</a></li> -->
                 <li><a href="about" class="nav-link">About Us</a></li>
                 <button id="logoutButton" class="nav-link"><span></span>LogOut</button>
 
@@ -56,37 +56,51 @@
             </div>
         </div>
         <br><br>
-        <section class="vision">
-            <h2>Our Vision</h2>
+        <section class="vision" id="OurTeam">
+            <h2>Our Team Member</h2>
 
             <div class="vision-container">
                 <div class="vision-box">
                     <i class='bx bx-code'></i>
-                    <h3>Target</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, adipisci. Odit, atque quis ab
-                        error est, omnis minus maxime consequatur nam voluptatibus voluptatum reiciendis quidem!</p>
+                    <h3>Tahab Poker</h3>
+                    <br><br>
+                    <p>SS21CO003</p>
+                    <br>
                 </div>
 
                 <div class="vision-box">
                     <i class='bx bx-target-lock'></i>
-                    <h3>Target</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, adipisci. Odit, atque quis ab
-                        error est, omnis minus maxime consequatur nam voluptatibus voluptatum reiciendis quidem!</p>
+                    <br>
+                    <h3>Mohammed Abbas Adil Kazi</h3>
+                    <br>
+                    <p>SS21CO062</p>
                 </div>
 
                 <div class="vision-box">
                     <i class='bx bx-code-curly'></i>
-                    <h3>Target</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, adipisci. Odit, atque quis ab
-                        error est, omnis minus maxime consequatur nam voluptatibus voluptatum reiciendis quidem!</p>
+                    <h3>Aditya Kamble</h3>
+                    <br><br>
+                    <p>SS21CO033</p>
+                    <br>
+                </div>
+                <div class="vision-box">
+                    <i class='bx bx-code-curly'></i>
+                    <h3>Rudrapratapsing Rajput</h3>
+                    
+                    <p>SS21CO022</p>
+                    <br>
                 </div>
             </div>
 
 
         </section>
-        <br><br>
-        <footer class="footer">
-            CopyRight &copy; All Right are Reserved 
+
+        <footer class="footer" >
+            <p>
+            CopyRight &copy; All Right are Reserved <br>
+            This Website is Only for Education Purpose
+        </p>
+        
         </footer>
         <!-- <script src="Js/about-script.js"></script> -->
 </body>
@@ -125,7 +139,7 @@
         signOut(auth)
             .then(() => {
                 // Sign out successful
-                // window.location.href = "login.html"; // Redirect to login page
+                // window.location.href = "login"; // Redirect to login page
                 window.location.href = "login"; // Redirect to login page
             })
             .catch((error) => {
@@ -136,7 +150,7 @@
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             // User is not logged in
-            // window.location.href = "login.html"; // Redirect to login page
+            // window.location.href = "login"; // Redirect to login page
             window.location.href = "login"; // Redirect to login page
         }
     });
@@ -155,7 +169,7 @@
     }));
     const detect = document.getElementById('detect');
     detect.addEventListener('click', () => {
-        // window.location.href = "process.html";
+        // window.location.href = "process;
         window.location.href = "process";
     });
 
