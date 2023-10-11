@@ -32,8 +32,8 @@
         </div>
         <div class="box">
 
-            <form class="p-3 text-center" id="predictForm" action="#">
-            <!-- <form class="p-3 text-center" id="predictForm" action="/process" method="post" enctype="multipart/form-data" > -->
+            <!-- <form class="p-3 text-center" id="predictForm" action="#"> -->
+            <form class="p-3 text-center" id="predictForm" action="/process" method="post" enctype="multipart/form-data" >
                 <div class="container">
                     <h1>Pneumonia Detection</h1>
                     <h4>This Website is Only for Education purpose not take it seriously!!</h4>
@@ -41,7 +41,7 @@
                     <br>
                     <div class="img_input_block">
                         <img src="" class="input_img" id="displayImage">
-                        <input type="file" class="file-input" accept="image" id="InputDisplay">
+                        <input type="file" class="file-input" accept="image" id="InputDisplay" name="img">
                         <button class="delete-btn" id="delt-btn"><i class='bx bxs-trash-alt'></i></button>
                     </div>
                     <br><br>
@@ -56,7 +56,7 @@
                     <span class="close-btn" id="closeModal"><i class='bx bx-x'></i></span>
                     <h2>Report</h2>
                     <img src="" id="reportImage" alt="X-ray Image" class="reportImage">
-                    <p>This is basic modal dialog</p>
+                    <p>{{my_string}}</p>
                 </div>
 
             </div>

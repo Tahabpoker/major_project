@@ -65,24 +65,8 @@ def processing_page_end():
     class_names = ["Atelectasis","Cardiomegaly","Consolidation","Edema","Effusion","Emphysema","Fibrosis","Hernia","Infiltration","Mass","Nodule","Pleural_Thickening","Pneumonia","Pneumothorax"]
     predicted_class_name = class_names[predicted_label]
 
-    # Now 'predicted_class_name' contains the predicted class name for the single image,
-    # and 'confidence' contains the associated confidence.
     pred = predicted_class_name
-    # print(f'Predicted Class: {predicted_class_name}')
-    # print(f'Confidence: {confidence * 100:.2f}%')
-
-   
-
-    # img = tf.io.read_file(image_path)
-    # img = tf.image.decode_image(img, channels=3)  # Make sure the number of channels is specified (usually 3 for RGB images)
-    # img = tf.image.resize(img, (256, 256))        # Resize the image
-    # img = img / 255.0                            # Normalize the pixel values to [0, 1]
-    # prediction = model.predict(np.expand_dims(img, 0))[0][0]
-
-    # if prediction < 0.5:
-    #     pred = "dose not have pneumonia"
-    # else:
-    #     pred = "have pneumonia"
+    
         
     return render_template("process.html",my_string = pred)
 
