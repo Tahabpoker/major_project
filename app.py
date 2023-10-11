@@ -43,7 +43,7 @@ def processing_page_end():
 
     # Load your PNG image
     imageFile = request.files.get('img',None)
-    image_path = "./testimages/" + imageFile.filename
+    image_path = "./testImages/" + imageFile.filename
     imageFile.save(image_path)
       # Replace with the path to your PNG image
     image = cv2.imread(image_path)
@@ -73,7 +73,10 @@ def processing_page_end():
 @app.route("/about")
 def about_page():
     return render_template("about.html")
-
+#to run this app 
 if __name__ == '__main__':
     app.run(debug=True)
     # runs at localhost:5000 or 127.0.0.1:5000
+
+
+
