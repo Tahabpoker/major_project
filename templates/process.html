@@ -33,24 +33,24 @@
         <div class="box">
 
             <!-- <form class="p-3 text-center" id="predictForm" action="#"> -->
-            <form class="p-3 text-center patientForm" id="predictForm" method="post" enctype="multipart/form-data">
+            <form class="p-3 text-center patientForm" id="predictForm" action="/process" method="post" enctype="multipart/form-data" >
                 <div class="leftSideForm">
                     <h1>Patient Details</h1>
                     <div class="inputFormfieldName">
-                        <label for="fname">First Name</label><input type="text" id="fname" name="Name"
+                        <label for="fname">Name</label><input type="text" id="name" name="name"
                             placeholder="Enter Your First Name" class="name" required>
                     </div>
                     <div class="inputFormfieldLname">
-                        <label for="lname">Last Name</label><input type="text" id="lname" name="Name"
+                        <label for="pId">patient id</label><input type="text" id="pId" name="pId"
                             placeholder="Enter Your Last Name" class="name" required>
                     </div>
                     <div class="inputFormfieldAge">
-                        <label for="Age">Age</label><input type="number" id="age" name="Name"
+                        <label for="Age">Age</label><input type="text" id="age" name="age"
                             placeholder="Enter Your Age" class="name" required>
                     </div>
                     <div class="inputFormfieldGender">
                         <label for="Gender" style="margin-left: -30px; margin-right: 50px;
-                        font-size: 20px;" class="gender">Gender: </label>
+                        font-size: 20px;">Gender: </label>
                         <label for="male">Male</label>
                         <input type="radio" id="male" name="gender" value="male">
 
@@ -215,32 +215,29 @@
             event.preventDefault();
 
         }
-        else {
-            event.preventDefault();
-            const fname = document.getElementById("fname").value;
-            const lname = document.getElementById("lname").value;
-            const age = document.getElementById("age").value;
-            const imageURL = URL.createObjectURL(InputDisplay.files[0]);
+        // else {
+        //     event.preventDefault();
+        //     const fname = document.getElementById("fname").value;
+        //     const lname = document.getElementById("lname").value;
+        //     const age = document.getElementById("age").value;
+        //     // const imageURL = URL.createObjectURL(InputDisplay.files[0]);
 
-            const genderRadioButtons = document.getElementsByName("gender");
-            let selectedGender = "";
-            for (let i = 0; i < genderRadioButtons.length; i++) {
-                if (genderRadioButtons[i].checked) {
-                    selectedGender = genderRadioButtons[i].value;
-                    break;
-                }
-            }
+        //     const genderRadioButtons = document.getElementsByName("gender");
+        //     let selectedGender = "";
+        //     for (let i = 0; i < genderRadioButtons.length; i++) {
+        //         if (genderRadioButtons[i].checked) {
+        //             selectedGender = genderRadioButtons[i].value;
+        //             break;
+        //         }
+        //     }
 
-            // Store the values in localStorage
-            localStorage.setItem("fname", fname);
-            localStorage.setItem("lname", lname);
-            localStorage.setItem("age", age);
-            localStorage.setItem("gender", selectedGender);
-
-
-            // Redirect to the "report.html" page
-            window.location.href = "00.html";
-        }
+        //     // Store the values in localStorage
+        //     localStorage.setItem("fname", fname);
+        //     localStorage.setItem("lname", lname);
+        //     localStorage.setItem("age", age);
+        //     localStorage.setItem("gender", selectedGender);
+            
+        // }
     });
 
 

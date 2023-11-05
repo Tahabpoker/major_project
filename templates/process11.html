@@ -37,13 +37,13 @@
                 <div class="leftSideForm">
                     <h1>Patient Details</h1>
                     <div class="inputFormfieldName">
-                        <label for="fname">First Name</label><input type="text" id="fname" name="Name" placeholder="Enter Your First Name" class="name" required>
+                        <label for="fname">First Name</label><input type="text" id="name" name="name" placeholder="Enter Your First Name" class="name" required>
                     </div>
                     <div class="inputFormfieldLname">
-                        <label for="lname">Last Name</label><input type="text" id="lname" name="Name" placeholder="Enter Your Last Name" class="name" required>
+                        <label for="lname">Last Name</label><input type="text" id="pId" name="pId" placeholder="Enter Your Last Name" class="name" required>
                     </div>
                     <div class="inputFormfieldAge">
-                        <label for="Age">Age</label><input type="number" id="age" name="Name" placeholder="Enter Your Age" class="name" required>
+                        <label for="Age">Age</label><input type="text" id="age" name="age" placeholder="Enter Your Age" class="name" required>
                     </div>
                     <div class="inputFormfieldGender">
                         <label for="Gender" style="margin-left: -30px; margin-right: 50px;
@@ -75,7 +75,7 @@
                     </div>
                     <br><br>
                     <!-- <button class="predict"><span></span>Predict</button> -->
-                    <input type="submit" class="predict" value="Predict" id="openModal" />
+                    <input type="submit" class="predict" value="Predict"  />
                 </div>
             </form>
         </div>
@@ -194,7 +194,7 @@
     // const openModal = document.getElementById("openModal");
     // const closeModal = document.getElementById("closeModal");
     // const Modal = document.getElementById("myModal");
-    const predictForm = document.getElementById("predictForm");
+    // const predictForm = document.getElementById("predictForm");
 
     const file = InputDisplay.files[0];
 
@@ -213,38 +213,38 @@
             
     //     }
     // })
-    predictForm.addEventListener("submit", function (event) {
-        if (!InputDisplay.files[0]) {
-            alert("Insert Image First");
-            event.preventDefault();
+    // predictForm.addEventListener("submit", function (event) {
+    //     if (!InputDisplay.files[0]) {
+    //         alert("Insert Image First");
+    //         event.preventDefault();
 
-        }
-        else {
-            event.preventDefault();
-            const fname = document.getElementById("fname").value;
-            const lname = document.getElementById("lname").value;
-            const age = document.getElementById("age").value;
-            const imageURL = URL.createObjectURL(InputDisplay.files[0]);
+    //     }
+    //     else {
+    //         event.preventDefault();
+    //         const fname = document.getElementById("fname").value;
+    //         const lname = document.getElementById("lname").value;
+    //         const age = document.getElementById("age").value;
+    //         const imageURL = URL.createObjectURL(InputDisplay.files[0]);
 
-            const genderRadioButtons = document.getElementsByName("gender");
-            let selectedGender = "";
-            for (let i = 0; i < genderRadioButtons.length; i++) {
-                if (genderRadioButtons[i].checked) {
-                    selectedGender = genderRadioButtons[i].value;
-                    break;
-                }
-            }
+    //         const genderRadioButtons = document.getElementsByName("gender");
+    //         let selectedGender = "";
+    //         for (let i = 0; i < genderRadioButtons.length; i++) {
+    //             if (genderRadioButtons[i].checked) {
+    //                 selectedGender = genderRadioButtons[i].value;
+    //                 break;
+    //             }
+    //         }
 
-            // Store the values in localStorage
-            localStorage.setItem("fname", fname);
-            localStorage.setItem("lname", lname);
-            localStorage.setItem("age", age);
-            localStorage.setItem("gender", selectedGender);
+    //         // Store the values in localStorage
+    //         localStorage.setItem("fname", fname);
+    //         localStorage.setItem("lname", lname);
+    //         localStorage.setItem("age", age);
+    //         localStorage.setItem("gender", selectedGender);
 
-            // Redirect to the "report.html" page
-            window.location.href = "meningioma.html";
-        }
-    });
+    //         // Redirect to the "report.html" page
+    //         window.location.href = "meningioma.html";
+    //     }
+    // });
     
     
 
