@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/report-style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
     <title>Document</title>
 </head>
+
 <body>
     <div class="navbar">
         <b>
-            <h1 class="logo" color="white"> MedAI</h1>
+            <h1 class="logo" color="white">MedAI</h1>
         </b>
         <ul class="nav-menu">
             <!-- <li><a href="home.html" class="nav-link">Home</a></li> -->
@@ -27,28 +31,138 @@
     </div>
     <div class="bannar">
         <h1>Report</h1>
-        <div class="report-img">
-            <img id="displayImage" src="" alt="Uploaded Image">
-        </div>
         <div class="report-body">
             <h2>Fibrosis</h2>
             <div class="report-desc">
-                <ul>
+                <!-- <ul>
                     <li>
-                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora omnis dignissimos eum ut doloribus non molestiae natus iure quaerat eveniet!</h3>
+                        
                     </li>
-                </ul>
+                </ul> -->
+
+                <div class="report_info">
+                    <h3>Patient Information:</h3>
+                    <p><strong>Name:</strong> <span id="name"></span></p>
+                    <p><strong>Age:</strong> <span id="age"></span></p>
+                    <p><strong>Sex:</strong> <span id="Gender"></span></p>
+
+                    <h3>Findings:</h3>
+                    <p>The chest X-ray performed on [date] shows the following findings:</p>
+
+                    <ul>
+                        <li><strong>Lungs:</strong> The lungs appear [normal/abnormal].</li>
+                        <li><strong>Heart:</strong> The heart size and shape are [normal/abnormal].</li>
+                        <li><strong>Pleura:</strong> The pleura is [normal/abnormal], with [specific findings if any].
+                        </li>
+                        <li><strong>Diaphragm:</strong> The diaphragm is [normal/abnormal], with [specific findings if
+                            any].</li>
+                        <li><strong>Bones:</strong> The bony structures of the chest are [normal/abnormal], with
+                            [specific findings if any].</li>
+                    </ul>
+
+                    <h3>Impression:</h3>
+                    <p>The chest X-ray findings suggest [impression or diagnosis]. Further evaluation or additional
+                        imaging may be required based on clinical indications and suspected conditions. Clinical
+                        correlation with the patient's history and symptoms is recommended.</p>
+
+                    <h3>Recommendations:</h3>
+                    <p>[List any specific recommendations, follow-up tests, or actions to be taken based on the
+                        findings.]</p>
+
+                </div>
             </div>
         </div>
-        
+
+
     </div>
+    <button id="saveButton" class="save-btn" onclick="saveAsImage()">Save</button>
 </body>
 <script>
-    const uploadedImage = localStorage.getItem('uploadedImage');
-        if (uploadedImage) {
-            console.log(localStorage.getItem('uploadedImage'));
+    const fname = localStorage.getItem("fname");
+    const lname = localStorage.getItem("lname");
+    const fullname = fname + " " + lname;
+    const age = localStorage.getItem("age");
 
-            document.getElementById('displayImage').src = uploadedImage;
+    if (fullname) {
+        document.getElementById('name').textContent = fullname;
+    }
+    if (age) {
+        document.getElementById('age').textContent = age;
+    }
+    const gender = localStorage.getItem('gender');
+    if(gender){
+        document.getElementById('Gender').textContent = gender;
+    }
+
+    function saveAsImage() {
+        // Get the div element to capture
+        const bannarDiv = document.querySelector('.bannar');
+
+        // Use html2canvas to capture the div as an image
+        html2canvas(bannarDiv).then(canvas => {
+            // Convert the canvas to a data URL
+            const dataURL = canvas.toDataURL('image/png');
+
+            // Create a link to download the image
+            const downloadLink = document.createElement('a');
+            downloadLink.href = dataURL;
+            downloadLink.download = 'report.png';
+            downloadLink.click();
+        });
+    }
+
+
+
+</script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"
+    import { getAuth, createUserWithEmailAndPassword, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"
+    import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyDA7INX-OKS5XvT5Zdm7rfNBBzR1yjKdCw",
+        authDomain: "authenticationtest-5ba1b.firebaseapp.com",
+        databaseURL: "https://authenticationtest-5ba1b-default-rtdb.firebaseio.com",
+        projectId: "authenticationtest-5ba1b",
+        storageBucket: "authenticationtest-5ba1b.appspot.com",
+        messagingSenderId: "869232976582",
+        appId: "1:869232976582:web:f28cea5921a4cdaeb1adc7",
+        measurementId: "G-L2FFYSKLEF"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app);
+
+    const auth = getAuth();
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', () => {
+        signOut(auth)
+            .then(() => {
+                // Sign out successful
+                // window.location.href = "login"; // Redirect to login page
+                window.location.href = "login"; // Redirect to login page
+            })
+            .catch((error) => {
+                // An error occurred during sign out
+                console.error(error);
+            });
+    });
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            // User is not logged in
+            // window.location.href = "login"; // Redirect to login page
+            window.location.href = "login"; // Redirect to login page
         }
+    });
 </script>
 </html>

@@ -15,7 +15,7 @@
     <div class="banner">
         <div class="navbar">
             <b>
-                <h1 class="logo" color="white">Pneumonia Detector System</h1>
+                <h1 class="logo" color="white">MedAI</h1>
             </b>
             <ul class="nav-menu">
                 <!-- <li><a href="home.html" class="nav-link">Home</a></li> -->
@@ -33,11 +33,40 @@
         <div class="box">
 
             <!-- <form class="p-3 text-center" id="predictForm" action="#"> -->
-            <form class="p-3 text-center" id="predictForm" action="/process11" method="post" enctype="multipart/form-data" >
+            <form class="p-3 text-center patientForm" id="predictForm"  method="post" enctype="multipart/form-data" >
+                <div class="leftSideForm">
+                    <h1>Patient Details</h1>
+                    <div class="inputFormfieldName">
+                        <label for="fname">First Name</label><input type="text" id="fname" name="Name" placeholder="Enter Your First Name" class="name" required>
+                    </div>
+                    <div class="inputFormfieldLname">
+                        <label for="lname">Last Name</label><input type="text" id="lname" name="Name" placeholder="Enter Your Last Name" class="name" required>
+                    </div>
+                    <div class="inputFormfieldAge">
+                        <label for="Age">Age</label><input type="number" id="age" name="Name" placeholder="Enter Your Age" class="name" required>
+                    </div>
+                    <div class="inputFormfieldGender">
+                        <label for="Gender" style="margin-left: -30px; margin-right: 50px;
+                        font-size: 20px;">Gender: </label>
+                        <label for="male">Male</label>
+                        <input type="radio" id="male" name="gender" value="male">
+
+                        <label for="female">Female</label>
+                        <input type="radio" id="female" name="gender" value="female">
+
+                        <label for="other">Other</label>
+                        <input type="radio" id="other" name="gender" value="other">
+                    </div>
+                </div>
                 <div class="container">
-                    <h1>Pneumonia Detection</h1>
+                    <h1>Brian MRI Detection</h1>
                     <h4>This Website is Only for Education purpose not take it seriously!!</h4>
                     <br>
+                    <!-- <h2>Select Detection Type</h1> -->
+                    <!-- <select name="typeDetection" id="selectDetection" class="select-type">
+                        <option value="brain">Brain X-ray</option>
+                        <option value="chest">Chest X-ray</option>
+                    </select> -->
                     <br>
                     <div class="img_input_block">
                         <img src="" class="input_img" id="displayImage">
@@ -50,6 +79,14 @@
                 </div>
             </form>
         </div>
+        <div id="myModal" class="modal">
+            <div class="modal-container">
+                <div class="modal-content">
+                    <span class="close-btn" id="closeModal"><i class='bx bx-x'></i></span>
+                    <h2>Report</h2>
+                    <img src="" id="reportImage" alt="X-ray Image" class="reportImage">
+                    <p>{{my_string}}</p>
+                </div>
 
             </div>
         </div>
@@ -154,45 +191,72 @@
         deltbtn.style.display = 'none';
     });
 
-    const openModal = document.getElementById("openModal");
-    const closeModal = document.getElementById("closeModal");
-    const Modal = document.getElementById("myModal");
+    // const openModal = document.getElementById("openModal");
+    // const closeModal = document.getElementById("closeModal");
+    // const Modal = document.getElementById("myModal");
     const predictForm = document.getElementById("predictForm");
 
     const file = InputDisplay.files[0];
 
-    openModal.addEventListener("click", () => {
+    // openModal.addEventListener("click", () => {
 
-        const file = InputDisplay.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                Modal.style.display = "block";
-                Modal.style.display = "flex";
-            }
-            reader.readAsDataURL(file);
-        }
-        else {
+    //     const file = InputDisplay.files[0];
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onload = function (e) {
+    //             Modal.style.display = "block";
+    //             Modal.style.display = "flex";
+    //         }
+    //         reader.readAsDataURL(file);
+    //     }
+    //     else {
             
-        }
-    })
+    //     }
+    // })
     predictForm.addEventListener("submit", function (event) {
         if (!InputDisplay.files[0]) {
             alert("Insert Image First");
             event.preventDefault();
 
         }
-    })
+        else {
+            event.preventDefault();
+            const fname = document.getElementById("fname").value;
+            const lname = document.getElementById("lname").value;
+            const age = document.getElementById("age").value;
+            const imageURL = URL.createObjectURL(InputDisplay.files[0]);
 
-    closeModal.addEventListener("click", () => {
-        Modal.style.display = "none";
-    })
+            const genderRadioButtons = document.getElementsByName("gender");
+            let selectedGender = "";
+            for (let i = 0; i < genderRadioButtons.length; i++) {
+                if (genderRadioButtons[i].checked) {
+                    selectedGender = genderRadioButtons[i].value;
+                    break;
+                }
+            }
 
-    window.addEventListener("click", (event) => {
-        if (event.target == Modal) {
-            Modal.style.display = "none";
+            // Store the values in localStorage
+            localStorage.setItem("fname", fname);
+            localStorage.setItem("lname", lname);
+            localStorage.setItem("age", age);
+            localStorage.setItem("gender", selectedGender);
+
+            // Redirect to the "report.html" page
+            window.location.href = "meningioma.html";
         }
-    })
+    });
+    
+    
+
+        // closeModal.addEventListener("click", () => {
+        //     Modal.style.display = "none";
+        // })
+
+        // window.addEventListener("click", (event) => {
+        //     if (event.target == Modal) {
+        //         Modal.style.display = "none";
+        //     }
+        // })
 </script>
 <script src="https://unpkg.com/scrollreveal"></script>
 <script>
@@ -205,7 +269,14 @@
     ScrollReveal().reveal('.box .container h1', { origin: 'top' });
     ScrollReveal().reveal('.box .container h4', { origin: 'left' });
     ScrollReveal().reveal('.img_input_block', { origin: 'right' });
+    ScrollReveal().reveal('.select-type', { origin: 'right' });
+    ScrollReveal().reveal('.container h2', { origin: 'right' });
     ScrollReveal().reveal('.predict', { origin: 'bottom' });
+
+    ScrollReveal().reveal('.leftSideForm h1', { origin: 'top' });
+    ScrollReveal().reveal('.leftSideForm .inputFormfieldName', { origin: 'left' });
+    ScrollReveal().reveal('.leftSideForm .inputFormfieldLname', { origin: 'right' });
+    ScrollReveal().reveal('.leftSideForm .inputFormfieldAge', { origin: 'bottom' });
 
 </script>
 

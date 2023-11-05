@@ -5,7 +5,7 @@
     font-family: 'Exo', sans-serif;
 }
 body{
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://media.istockphoto.com/id/864573868/photo/medical-team-performing-surgical-operation-in-modern-operating-room.jpg?s=612x612&w=0&k=20&c=zXF_9Ras9TchDAEksAbaUzsB3a6ObdUU8gZAAVb93OI=');
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('process-bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -76,10 +76,10 @@ body{
     overflow: hidden;
 }
 .bannar{
-    margin-left: 25%;
+    margin-left: 15%;
     margin-top: 10px;
-    width: 50%;
-    height: 80vh;
+    width: 70%;
+    padding: 30px 0 30px 0;
     background-color: white;
     border-radius: 30px;
 }
@@ -103,9 +103,38 @@ body{
 .report-body h2{
     text-align: center;
     margin-top: 20px;
+
 }
+
 .report-body .report-desc{
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 70px;
     margin-right: 30px;
+}
+.report-body .report-desc .patient_info_div{
+    margin: 10px 0 15px 0;
+}
+.report-body .report-desc .report_info .report_info_heading{
+    margin: 10px 0 5px 0;   
+}
+.report-body .report-desc .report_info p, ul li{
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+.save-btn{
+    margin-left: 45%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgb(0,184,231);
+    border-radius: 20px;
+    transition: 0.5s ease;
+}
+.save-btn:hover{
+    background-color: rgb(0,184,231);
+    color: white;
+    font-weight: 800;
 }
