@@ -30,45 +30,49 @@
         </div>
     </div>
     <div class="bannar">
-        <h1>Report</h1>
+        <h1>MRI Brain</h1>
         <div class="report-body">
-            <h2>Ateletics</h2>
+            <h2>NoTumor</h2>
             <div class="report-desc">
                 <!-- <ul>
-                    <p>
+                    <li>
                         
-                    </p>
+                    </li>
                 </ul> -->
+
 
                 <div class="report_info">
                     <h3>Patient Information:</h3>
                     <p><strong>Name:</strong> <span id="name"></span></p>
                     <p><strong>Age:</strong> <span id="age"></span></p>
-                    <p><strong>Sex:</strong> <span id="gender"></span></p>
-
+                    <p><strong>Sex:</strong> <span id="Gender"></span></p>
                     <h3>Findings:</h3>
-                    <p>The chest X-ray performed on [date] shows the following findings:</p>
+                    <p>A brain MRI was performed on [date] to evaluate [patient's symptoms or clinical indication]. The
+                        study demonstrates the presence of a glioma in the [specific location of the brain] with the
+                        following characteristics:</p>
 
                     <ul>
-                        <li><strong>Lungs:</strong> The lungs appear [normal/abnormal].</li>
-                        <li><strong>Heart:</strong> The heart size and shape are [normal/abnormal].</li>
-                        <li><strong>Pleura:</strong> The pleura is [normal/abnormal], with [specific findings if any].
+                        <li><strong>Location:</strong> The glioma is located in the [specific brain region],
+                            approximately [distance] from [anatomical landmarks].</li>
+                        <li><strong>Size:</strong> The maximum dimensions of the tumor are approximately [size] (length)
+                            x [size] (width) x [size] (height).</li>
+                        <li><strong>Shape:</strong> The glioma exhibits [well-defined or infiltrative] margins.</li>
+                        <li><strong>Enhancement:</strong> There is [presence or absence] of contrast enhancement within
+                            the tumor, suggesting [pattern of enhancement].</li>
+                        <li><strong>Peritumoral Edema:</strong> Surrounding peritumoral edema is noted, contributing to
+                            [clinical findings].</li>
+                        <li><strong>Mass Effect:</strong> The tumor exerts a mass effect on adjacent structures, leading
+                            to [related findings].</li>
+                        <li><strong>Hemorrhage or Necrosis:</strong> [Presence or absence] of areas of hemorrhage or
+                            necrosis within the glioma.</li>
+                        <li><strong>Perfusion:</strong> [Perfusion parameters if measured] within and around the glioma.
                         </li>
-                        <li><strong>Diaphragm:</strong> The diaphragm is [normal/abnormal], with [specific findings if
-                            any].</li>
-                        <li><strong>Bones:</strong> The bony structures of the chest are [normal/abnormal], with
-                            [specific findings if any].</li>
                     </ul>
 
                     <h3>Impression:</h3>
-                    <p>The chest X-ray findings suggest [impression or diagnosis]. Further evaluation or additional
-                        imaging may be required based on clinical indications and suspected conditions. Clinical
-                        correlation with the patient's history and symptoms is recommended.</p>
-
-                    <h3>Recommendations:</h3>
-                    <p>[List any specific recommendations, follow-up tests, or actions to be taken based on the
-                        findings.]</p>
-
+                    <p>MRI findings are highly suggestive of a glioma in the [specific location]. Further diagnostic and
+                        therapeutic steps, such as biopsy, grading, or consultation with an oncologist or neurosurgeon,
+                        are warranted.</p>
                 </div>
             </div>
         </div>
@@ -82,7 +86,7 @@
     const lname = localStorage.getItem("lname");
     const fullname = fname + " " + lname;
     const age = localStorage.getItem("age");
-    
+
     if (fullname) {
         document.getElementById('name').textContent = fullname;
     }
@@ -91,7 +95,7 @@
     }
     const gender = localStorage.getItem('gender');
     if(gender){
-        document.getElementById('gender').textContent = gender;x
+        document.getElementById('Gender').textContent = gender;x
     }
 
     function saveAsImage() {

@@ -77,18 +77,65 @@ body{
 }
 .box{
     display: flex;
-    justify-content: right;
     text-align: center;
     color: white;
     margin-top: 25px;
+    width: 100%;
     /* min-height: 70vh; */
 }
-.container{
-    /* background: transparent;
-    backdrop-filter: blur(4px);
-    border: 2px solid rgba(255,255,255,0.2);
-    box-shadow: 0px 0px 10px rgba(0,0, 0, 0.2); */
+.leftSideForm{
+    margin-top: 100px;
+    
+    padding-left: 100px;
+    align-items: center;
+}
+.leftSideForm h1{
+    margin-bottom: 10px;
+}
+.inputFormfieldName{
+    margin-bottom: 10px;
+}
+.leftSideForm .inputFormfieldName label{
+    margin-right: 10px;
+    font-size: 20px;
+}
+.leftSideForm .inputFormfieldName .name{
+    border-radius: 30px;
+    width: 200px;
+    padding: 10px;
+}
+
+.inputFormfieldLname{
+    margin-bottom: 10px;
+}
+
+.leftSideForm .inputFormfieldLname label{
+    margin-right: 10px;
+    font-size: 20px;
+}
+.leftSideForm .inputFormfieldLname .name{
+    border-radius: 30px;
+    width: 200px;
+    padding: 10px;
+}
+
+.leftSideForm .inputFormfieldAge label{
+    margin-right: 10px;
+    font-size: 20px;
+}
+.leftSideForm .inputFormfieldAge .name{
+    border-radius: 30px;
+    width: 200px;
+    margin-left: 60px;
+    padding: 10px;
+}
+.patientForm{
     display: flex;
+}
+.container{
+    display: flex;
+    position: relative;
+    left: 60%;
     margin-top: 100px;
     flex-direction: column;
     padding: 0 15px 0 15px;
@@ -229,6 +276,25 @@ button:hover span{
     transform: translateX(-50%);
     max-width: 100%;
     max-height: 300px;
+}
+.container h2{
+    margin-left: -20px;
+}
+.select-type{
+    /* width: 200px; */
+    margin-left:25%;
+    max-width: 200px;
+    text-align: center;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid rgb(0,184,231);
+    border-radius: 20px;
+    height: 30px;
+    font-size: 20px;
+}
+option{
+    background-color: black;
+    color: white;
 }
 /* @media (max-width: 768px) {
     .navbar {
