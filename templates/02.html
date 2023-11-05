@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/report-style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar">
+        <b>
+            <h1 class="logo" color="white"> MedAI</h1>
+        </b>
+        <ul class="nav-menu">
+            <!-- <li><a href="home.html" class="nav-link">Home</a></li> -->
+            <li><a href="home" class="nav-link">Home</a></li>
+            <!-- <li><a href="about" class="nav-link">About Us</a></li> -->
+            <li><a href="about" class="nav-link">About Us</a></li>
+            <button id="logoutButton" class="nav-link"><span></span>LogOut</button>
+        </ul>
+        <div class="hamburger">
+            <label class="bar"></label>
+            <label class="bar"></label>
+            <label class="bar"></label>
+        </div>
+    </div>
+    <div class="bannar">
+        <h1>Report</h1>
+        <div class="report-img">
+            <img id="displayImage" src="" alt="Uploaded Image">
+        </div>
+        <div class="report-body">
+            <h2>Effusion</h2>
+            <div class="report-desc">
+                <ul>
+                    <li>
+                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora omnis dignissimos eum ut doloribus non molestiae natus iure quaerat eveniet!</h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<script>
+    const uploadedImage = localStorage.getItem('uploadedImage');
+        if (uploadedImage) {
+            console.log(localStorage.getItem('uploadedImage'));
+
+            document.getElementById('displayImage').src = uploadedImage;
+        }
+</script>
+</html>
