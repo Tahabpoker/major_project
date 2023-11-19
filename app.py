@@ -10,7 +10,7 @@ import cv2
 
 app = Flask(__name__)
 
-model = tf.keras.models.load_model("models/ds121_1k.h5")
+model = tf.keras.models.load_model("models/DenseNet121_chest_xray.h5")
 # model1 = tf.keras.models.load_model("models/brainTumor.h5",compile = False)
 
 # model1.compile(optimizer=Adam(lr=0.00005),  # Experiment with different learning rates
@@ -98,13 +98,11 @@ def chest_processing_page_end():
         # confidence = prediction[0][predicted_label]  # Probability of the predicted class
 
         # If you want to map the class index to a class name
-        class_names= ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'No Finding', 'Hernia', 'Pneumonia', 'Mass', 'Effusion', 'Nodule', 'Infiltration', 'Pneumothorax']
-        
+        labels = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Effusion', 'Hernia', 'Infiltration', 'Mass', 'No Finding', 'Nodule', 'Pneumonia', 'Pneumothorax']
+ 
         # class_names = ["Atelectasis","Cardiomegaly","Consolidation","Edema","Effusion","Emphysema","Fibrosis","Hernia","Infiltration","Mass","Nodule","Pleural_Thickening","Pneumonia","Pneumothorax"]
         # predicted_class_name = class_names[predicted_label]
-        # predicted_class_name = class_names[predicted_label]
-        predicted_class_name = "Atelectasis"
-        # pred = predicted_class_name
+        predicted_class_name = labels[predicted_label]
           
         # return render_template("process.html",my_string = pred)
         # Replace this with your actual prediction logic
