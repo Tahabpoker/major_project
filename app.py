@@ -7,10 +7,11 @@ import keras
 from keras.optimizers import Adam
 from flask import render_template, request, redirect, url_for
 import cv2
+import datetime
 
 app = Flask(__name__)
-
-model = tf.keras.models.load_model("models/DenseNet121_chest_xray.h5")
+now = datetime.datetime.now ()
+model = tf.keras.models.load_model("models/chest_xray.h5")
 # model1 = tf.keras.models.load_model("models/brainTumor.h5",compile = False)
 
 # model1.compile(optimizer=Adam(lr=0.00005),  # Experiment with different learning rates
@@ -30,6 +31,7 @@ prediction_routes_chest_xRay = {
     'Nodule': 'page8',
     'Infiltration': 'page9',
     'Pneumothorax': 'page10',
+    
 }
 prediction_routes_brain_MRI = {
     'glioma': 'glioma',
@@ -37,7 +39,6 @@ prediction_routes_brain_MRI = {
     'notumor': 'notumor', 
     'pituitary': 'pituitary'
 }
-
 
 @app.route('/login')
 def login_page():
@@ -51,6 +52,7 @@ def register_page():
 
 @app.route("/")
 def home__page():
+    
     return render_template("home.html")
 
 
@@ -76,6 +78,7 @@ def chest_processing_page_end():
     age = request.form.get('age',None)
     global gender 
     gender = request.form.get('gender',None)
+    print(now)
 
     imageFile = request.files.get('img',None)
     if imageFile:
@@ -157,79 +160,79 @@ def about_page():
 @app.route("/page0", methods=["GET"])
 def page0():
     pred = request.args.get('pred')
-    return render_template("00.html",name = name,pId = pId,age = age,gender =gender ) 
+    return render_template("00.html",name = name,pId = pId,age = age,gender =gender ,now = now) 
 
 @app.route("/page1", methods=["GET"])
 def page1():
     pred = request.args.get('pred')
-    return render_template("01.html", name = name,pId = pId,age = age,gender = gender)
-
+    return render_template("01.html", name = name,pId = pId,age = age,gender = gender,now = now)
+ 
 @app.route("/page2", methods=["GET"])
 def page2():
     pred = request.args.get('pred')
-    return render_template("02.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("02.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page3", methods=["GET"])
 def page3():
     pred = request.args.get('pred')
-    return render_template("03.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("03.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page4", methods=["GET"])
 def page4():
     pred = request.args.get('pred')
-    return render_template("04.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("04.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page5", methods=["GET"])
 def page5():
     pred = request.args.get('pred')
-    return render_template("05.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("05.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page6", methods=["GET"])
 def page6():
     pred = request.args.get('pred')
-    return render_template("06.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("06.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page7", methods=["GET"])
 def page7():
     pred = request.args.get('pred')
-    return render_template("07.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("07.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page8", methods=["GET"])
 def page8():
     pred = request.args.get('pred')
-    return render_template("08.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("08.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page9", methods=["GET"])
 def page9():
     pred = request.args.get('pred')
-    return render_template("09.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("09.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/page10", methods=["GET"])
 def page10():
     pred = request.args.get('pred')
-    return render_template("10.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("10.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/glioma", methods=["GET"])
 def glioma():
     pred = request.args.get('pred')
-    return render_template("glioma.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("glioma.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 @app.route("/meningioma", methods=["GET"])
 def meningioma():
     pred = request.args.get('pred')
-    return render_template("meningioma.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("meningioma.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 
 @app.route("/notumor", methods=["GET"])
 def notumor():
     pred = request.args.get('pred')
-    return render_template("notumor.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("notumor.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 
 @app.route("/pituitary", methods=["GET"])
 def pituitary():
     pred = request.args.get('pred')
-    return render_template("pituitary.html", name = name,pId = pId,age = age,gender = gender)
+    return render_template("pituitary.html", name = name,pId = pId,age = age,gender = gender,now = now)
 
 
 #to run this app 
