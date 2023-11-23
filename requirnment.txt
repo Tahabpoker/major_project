@@ -1,0 +1,8 @@
+flask 
+tensorflow 
+os 
+numpy 
+opencv-python
+seaborn
+pandas
+PIL

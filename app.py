@@ -1,4 +1,3 @@
-# import cv2
 import numpy as np 
 from flask import Flask
 from PIL import Image
@@ -12,11 +11,11 @@ import datetime
 app = Flask(__name__)
 now = datetime.datetime.now ()
 model = tf.keras.models.load_model("models/chest_xray.h5")
-# model1 = tf.keras.models.load_model("models/brainTumor.h5",compile = False)
+model1 = tf.keras.models.load_model("models/brainTumor.h5",compile = False)
 
-# model1.compile(optimizer=Adam(lr=0.00005),  # Experiment with different learning rates
-#             loss='categorical_crossentropy',
-#             metrics=['accuracy'])
+model1.compile(optimizer=Adam(learning_rate=0.00005),  # Experiment with different learning rates
+            loss='categorical_crossentropy',
+            metrics=['accuracy'])
 
 # Define a mapping of predictions to routes
 prediction_routes_chest_xRay = {
@@ -52,7 +51,7 @@ def register_page():
 
 @app.route("/")
 def home__page():
-    
+
     return render_template("home.html")
 
 
@@ -106,7 +105,6 @@ def chest_processing_page_end():
         # class_names = ["Atelectasis","Cardiomegaly","Consolidation","Edema","Effusion","Emphysema","Fibrosis","Hernia","Infiltration","Mass","Nodule","Pleural_Thickening","Pneumonia","Pneumothorax"]
         # predicted_class_name = class_names[predicted_label]
         predicted_class_name = labels[predicted_label]
-          
         # return render_template("process.html",my_string = pred)
         # Replace this with your actual prediction logic
         if  predicted_class_name in prediction_routes_chest_xRay:
@@ -130,23 +128,32 @@ def brain_processing_page_end():
 
     imageFile = request.files.get('img',None)
     if imageFile:
-        # image_path = "./testImages/" + imageFile.filename
-        # imageFile.save(image_path)
-        # # Replace with the path to your PNG image
-        # image = cv2.imread(image_path)
-        # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Ensure the image is in RGB format
+        image_path = "./testImages/" + imageFile.filename
+        imageFile.save(image_path)
+        # Replace with the path to your PNG image
+        image = cv2.imread(image_path)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Ensure the image is in RGB format
 
-        # # Resize the image to 224x224 to match the model's input shape
-        # image = cv2.resize(image, (224, 224))
+        # Resize the image to 224x224 to match the model's input shape
+        image = cv2.resize(image, (224, 224))
 
-        # image = image / 255.0  # Normalize pixel values to [0, 1]
+        image = image / 255.0  # Normalize pixel values to [0, 1]
 
-        # # Make a prediction using your model
-        # prediction = model.predict(np.expand_dims(image, axis=0))
-        # predicted_label = np.argmax(prediction)
-        # class_names = ["glioma","meningioma","notumor","pituitary"]
+        # Make a prediction using your model
+        prediction = model1.predict(np.expand_dims(image, axis=0))  # Add an extra dimension for batch size
+
+        # Get the predicted class label and associated probability/confidence
+        predicted_label = np.argmax(prediction)
+        # confidence = prediction[0][predicted_label]  # Probability of the predicted class
+
+        labels = ["glioma","meningioma","notumor","pituitary"]
+        # class_names= ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'No Finding', 'Hernia', 'Pneumonia', 'Mass', 'Effusion', 'Nodule', 'Infiltration', 'Pneumothorax']
+
+        # class_names = ["Atelectasis","Cardiomegaly","Consolidation","Edema","Effusion","Emphysema","Fibrosis","Hernia","Infiltration","Mass","Nodule","Pleural_Thickening","Pneumonia","Pneumothorax"]
         # predicted_class_name = class_names[predicted_label]
-        predicted_class_name = "glioma"
+        predicted_class_name = labels[predicted_label]
+
+        # predicted_class_name = "glioma"
         # Now, you can use this 'img' for prediction with your model
         if  predicted_class_name in prediction_routes_brain_MRI:
                 route_name = prediction_routes_brain_MRI[predicted_class_name]
@@ -242,3 +249,6 @@ if __name__ == '__main__':
 
 
 
+# [[1.0054751e-02 6.2483288e-03 9.9246643e-02 3.7630584e-02 5.5020029e-04
+#   1.0495354e-02 8.7884951e-01 2.1009784e-02 1.2422445e-02 2.9717616e-03
+#   9.1892384e-02]]
