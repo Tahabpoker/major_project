@@ -37,29 +37,28 @@
                 <div class="leftSideForm">
                     <h1>Patient Details</h1>
                     <div class="inputFormfieldName">
-                        <label for="fname">First Name</label><input type="text" id="name" name="name" placeholder="Enter Your First Name" class="name" required>
+                        <label for="fname">Name</label><input type="text" id="name" name="name" placeholder="Enter Your Name" class="name" required>
                     </div>
                     <div class="inputFormfieldLname">
-                        <label for="lname">Last Name</label><input type="text" id="pId" name="pId" placeholder="Enter Your Last Name" class="name" required>
+                        <label for="lname">Patient Id</label><input type="text" id="pId" name="pId" placeholder="Enter Patient ID" class="name" required>
                     </div>
                     <div class="inputFormfieldAge">
                         <label for="Age">Age</label><input type="text" id="age" name="age" placeholder="Enter Your Age" class="name" required>
                     </div>
                     <div class="inputFormfieldGender">
-                        <label for="Gender" style="margin-left: -30px; margin-right: 50px;
-                        font-size: 20px;">Gender: </label>
+                        <label for="Gender" class="LabelForGender">Gender: </label>
                         <label for="male">Male</label>
-                        <input type="radio" id="male" name="gender" value="male">
+                        <input type="radio" id="male" name="gender" value="male" class="RadioWithName">
 
                         <label for="female">Female</label>
-                        <input type="radio" id="female" name="gender" value="female">
+                        <input type="radio" id="female" name="gender" value="female" class="RadioWithName">
 
                         <label for="other">Other</label>
-                        <input type="radio" id="other" name="gender" value="other">
+                        <input type="radio" id="other" name="gender" value="other" class="RadioWithName"s>
                     </div>
                 </div>
                 <div class="container">
-                    <h1>Brian MRI Detection</h1>
+                    <h1>Brain MRI Detection</h1>
                     <h4>This Website is Only for Education purpose not take it seriously!!</h4>
                     <br>
                     <!-- <h2>Select Detection Type</h1> -->
@@ -67,13 +66,13 @@
                         <option value="brain">Brain X-ray</option>
                         <option value="chest">Chest X-ray</option>
                     </select> -->
-                    <br>
+                    
                     <div class="img_input_block">
                         <img src="" class="input_img" id="displayImage">
                         <input type="file" class="file-input" accept="image" id="InputDisplay" name="img">
                         <button class="delete-btn" id="delt-btn"><i class='bx bxs-trash-alt'></i></button>
                     </div>
-                    <br><br>
+                    <br>
                     <!-- <button class="predict"><span></span>Predict</button> -->
                     <input type="submit" class="predict" value="Predict"  />
                 </div>

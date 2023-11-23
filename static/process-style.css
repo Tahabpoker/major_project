@@ -63,8 +63,8 @@ body{
     background-color: white;
 }
 #logoutButton{
-    width: 200px;
-    padding: 10px 15px;
+    width: 180px;
+    padding: 7px 15px;
     border: 2px solid  rgb(0,184,231);
     border-radius: 30px;
     background: transparent;
@@ -84,24 +84,27 @@ body{
     /* min-height: 70vh; */
 }
 .leftSideForm{
-    margin-top: 100px;
-    
-    padding-left: 100px;
+    margin-top: 50px;
+    padding-left: 50px;
     align-items: center;
+}
+.name{
+    border: transparent;
 }
 .leftSideForm h1{
     margin-bottom: 10px;
+    font-size: 25px;
 }
 .inputFormfieldName{
     margin-bottom: 10px;
 }
 .leftSideForm .inputFormfieldName label{
-    margin-right: 10px;
-    font-size: 20px;
+    margin-right: 35px;
+    font-size: 18px;
 }
 .leftSideForm .inputFormfieldName .name{
     border-radius: 30px;
-    width: 200px;
+    width: 180px;
     padding: 10px;
 }
 
@@ -110,24 +113,32 @@ body{
 }
 
 .leftSideForm .inputFormfieldLname label{
-    margin-right: 10px;
-    font-size: 20px;
+    margin-right: 15px;
+    font-size: 18px;
 }
 .leftSideForm .inputFormfieldLname .name{
     border-radius: 30px;
-    width: 200px;
+    width: 180px;
     padding: 10px;
 }
-
-.leftSideForm .inputFormfieldAge label{
+.LabelForGender{
+    font-size: 18px;
+    margin-right: 30px;
+    margin-left: 15px;
+}
+.RadioWithName{
     margin-right: 10px;
-    font-size: 20px;
+}
+.leftSideForm .inputFormfieldAge label{
+    margin-right: 30px;
+    font-size: 18px;
 }
 .leftSideForm .inputFormfieldAge .name{
     border-radius: 30px;
-    width: 200px;
-    margin-left: 60px;
+    width: 180px;
+    margin-left: 30px;
     padding: 10px;
+    margin-bottom: 10px;
 }
 .patientForm{
     display: flex;
@@ -135,29 +146,33 @@ body{
 .container{
     display: flex;
     position: relative;
-    left: 60%;
-    margin-top: 100px;
+    margin-left: 400px;
+    margin-top: 50px;
     flex-direction: column;
     padding: 0 15px 0 15px;
 }
 .container h1{
-    font-size: 40px;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.container h4{
+    font-size: 14px;
 }
 .file-input{
-    position: relative;
     border: 5px solid rgba(0, 184, 231, 0.2);
     border-radius: 50px;
     padding: 2px;
     font-size: 18px;
     width: 300px;
-    margin-left: -75px;
+    height: 40px;
+    margin-left: 55px;
     justify-content: center;
-    left: 30%;
 }
 .file-input::-webkit-file-upload-button{
     background: transparent;
     width: 150px;
-    padding: 10px;
+    height: 40px;
+    padding: 5px 5px;
     color: white;
     border: 2px solid rgb(0,184,231);
     border-radius: 50px;
@@ -185,7 +200,7 @@ body{
     overflow: hidden;
     left: 30%;
     transition: 0.5s ;
-    margin: -10px 0 0 -10px;
+    margin: 10px 0px 0 -10px;
 }
 .predict:hover{
     background-color: rgb(0,184,231);
