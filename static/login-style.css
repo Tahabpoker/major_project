@@ -4,6 +4,7 @@
     margin: 0px;
     padding: 0px;
     font-family: 'Exo', sans-serif;
+    /* font-size: 55%; */
 }
 .context {
     position: absolute;
@@ -214,7 +215,7 @@ span{
 }
 header{
     color: #fff;
-    font-size: 30px;
+    font-size: 28px;
     display: flex;
     justify-content: center;
     padding: 0 15px 0 15px;
@@ -227,12 +228,12 @@ header{
 }
 .input{
     width: 87%;
-    height: 45px;
+    height: 40px;
     border: none;
     outline: none;
     border-radius: 30px;
     color: #fff;
-    padding: 0 0 0 45px;
+    padding: 0 10px 0 45px;
     background: rgba(255, 255, 255, 0.18);
 }
 i{
